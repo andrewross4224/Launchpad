@@ -1,20 +1,14 @@
-function Header({ currentPage, handlePageChange, loggedIn }) {
+import { NavLink } from "react-router-dom";
+function Header({ loggedIn }) {
     return (
         <header className="fixed-top">
-            <h1>Launch Pad</h1>
+            <h1 className="text-center">Launch Pad</h1>
             <ul className="nav nav-tabs justify-content-center py-2">
                 <li className="nav-item">
-                    <a onClick={() => handlePageChange('Home')}
-                        className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>
-                        Home</a>
+                    <NavLink to='/' className='nav-link'>Home</NavLink>
                 </li>
                 <li className="nav-item">
-                    {loggedIn ?
-                        <a className={currentPage === 'Signout' ? 'nav-link active' : 'nav-link'}>
-                            Signout</a>
-                        :
-                        <a className={currentPage === 'Signout' ? 'nav-link active' : 'nav-link'}>
-                            Login</a>}
+                    <NavLink to='/login' className='nav-link'>Login</NavLink>
                 </li>
             </ul>
         </header>

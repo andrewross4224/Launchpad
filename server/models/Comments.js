@@ -12,4 +12,8 @@ const commentSchema = new Schema({
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp)
     }
-})
+});
+
+
+const Comments = model('Comment', commentSchema)
+module.exports =  Comments;

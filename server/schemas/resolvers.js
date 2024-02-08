@@ -52,6 +52,19 @@ const resolvers = {
       }
       throw new AuthenticationError("You are not authorized to do that.");
     },
-    
+    saveLaunch: async (parent, { launchData }, context) => {
+        if (context.user) {
+          const data = await Launch.saveLaunch(launchData);
+          return data;
+        }
+          throw new AuthenticationError("You must be logged in to book a trip.");
+      },
+      removeLaunch: async (parent, { LocationData }, context) => {
+        if (context.user) {
+          const data = await Launch.removeLaunch(launchData);
+          return data;
+        }
+          throw new AuthenticationError("You must be logged in to book a trip.");
+      },
   },
 };

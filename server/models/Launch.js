@@ -26,6 +26,6 @@ const launchSchema = new Schema({
     }
 })
 
-const launches = model('launches', launchSchema)
+const Launches = model('launches', launchSchema)
 
-module.exports = launches;
+module.exports = Launches;

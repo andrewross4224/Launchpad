@@ -12,7 +12,8 @@ const commentSchema = new Schema({
         type: Date,
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp)
-    }
+    },
+    // launchId: [store launch id's here to link comments to specific launch]
 });
 
 

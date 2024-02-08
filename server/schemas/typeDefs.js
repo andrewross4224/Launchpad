@@ -36,7 +36,7 @@ const typeDefs = `
 
     type Query {
         me: User
-        comments: []
+        comments(username: String): [Comments]
     }
 
     type Mutation {

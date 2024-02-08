@@ -1,4 +1,5 @@
 const { Schema, model } = require ('mongoose')
+const dateFormat = require('../utils/dateFormat');
 
 const commentSchema = new Schema({
     commentText: {
@@ -12,4 +13,8 @@ const commentSchema = new Schema({
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp)
     }
-})
+});
+
+
+const Comments = model('Comment', commentSchema)
+module.exports =  Comments;

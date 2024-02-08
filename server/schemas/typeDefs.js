@@ -4,7 +4,7 @@ const typeDefs = `
         username: String
         email: String
         location: String
-        savedLanches: [Launch]
+        savedLaunches: [Launch]
     }
 
     type Comment {

@@ -49,10 +49,10 @@ export const REMOVE_COMMENT = gql`
 `;
 
 export const SAVE_LAUNCH = gql`
-  mutation saveLaunch($launchData: LaunchInput!) {
-    saveLaunch(launchData: $launchData) {
+  mutation saveLaunch($launchId: ID!) {
+    saveLaunch(launchId: $launchId) {
       _id
-     launchDate
+     launchDates
      location
      missionDescription
      slug

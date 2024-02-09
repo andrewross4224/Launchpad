@@ -15,6 +15,11 @@ const commentSchema = new Schema({
     },
     launchId: {
         type: String
+    },
+    commentAuthor: {
+        type: String,
+        required: true,
+        trime: true
     }
 });
 

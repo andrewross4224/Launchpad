@@ -19,7 +19,7 @@ const typeDefs = `
         launchDate: String
         location: String
         missionDescription: String
-        slug: string
+        slug: String
     }
 
     type Auth {
@@ -32,7 +32,7 @@ const typeDefs = `
         launchDate: String
         location: String
         missionDescription: String
-        slug: string
+        slug: String
     }
 
     type Query {
@@ -45,7 +45,8 @@ const typeDefs = `
         addUser(username: String!, email: String!, password: String!): Auth
         saveLaunch(launchData: LaunchInput!): User
         removeLaunch(launchId: ID!): User
-        addComment(commentText: ID!, commentText: String!): Comment
+        addComment(commentId: ID!, commentText: String!): Comment
         removeComment(commentId: ID!): Comment
     }
-`
+`;
+module.exports = typeDefs;

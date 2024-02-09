@@ -17,7 +17,8 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
   background-image: url('https://science.nasa.gov/wp-content/uploads/2023/06/webb-flickr-52259221868-30e1c78f0c-4k-jpg.webp');
@@ -37,9 +38,4 @@ header {
 .card {
   backdrop-filter: blur(17px);
   background-color: rgba(117, 117, 117, 0.3);
-}
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

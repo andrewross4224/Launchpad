@@ -11,6 +11,7 @@ const typeDefs = `
         _id: ID!
         commentText: String
         createdAt: String
+        launchId: String
     }
 
     type Launch {
@@ -36,7 +37,7 @@ const typeDefs = `
 
     type Query {
         me: User
-        comments(username: String): [Comments]
+        comments(username: String): [Comment]
     }
 
     type Mutation {

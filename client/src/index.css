@@ -12,6 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  
 }
 body {
   margin: 0;
@@ -32,4 +33,13 @@ header {
   padding: 10px;
   border-radius: 0 0 25px 25px;
   margin-left: 25%;
+}
+.card {
+  backdrop-filter: blur(17px);
+  background-color: rgba(117, 117, 117, 0.3);
+}
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

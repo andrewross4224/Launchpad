@@ -11,8 +11,8 @@ function OurCard() {
             <Card.Title>Date</Card.Title>
             <Card.Title>Time</Card.Title>
             <ButtonGroup>
-                <Button variant="primary" href=''>Launch Details</Button>
-                <Button variant="primary" href=''>Favorite</Button>
+                <Button variant="outline-warning" href=''>Launch Details</Button>
+                <Button variant="outline-warning" href=''>Favorite</Button>
             </ButtonGroup>
 
         </Card>

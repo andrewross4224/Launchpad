@@ -43,13 +43,21 @@ header {
 .form{
   backdrop-filter: blur(17px);
   background-color: rgba(117, 117, 117, 0.3);
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 25px;
-  padding-right: 25px;
-  border-radius: 20px;
   color: white;
+  border-radius: 25px;
 }
 #disclaim {
   font-size: small;
+}
+
+.Favorite {
+  border: none;
+}
+
+.Favorite:hover{
+  background-color: rgba(117, 117, 117, 0);
+}
+
+.Favorite:target{
+  background-color: rgba(117, 117, 117, 0);
 }

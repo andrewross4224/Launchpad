@@ -19,7 +19,7 @@ const typeDefs = `
         launchDate: String
         location: String
         missionDescription: String
-        slug: string
+        slug: String
     }
 
     type Auth {
@@ -32,7 +32,7 @@ const typeDefs = `
         launchDate: String
         location: String
         missionDescription: String
-        slug: string
+        slug: String
     }
 
     type Query {

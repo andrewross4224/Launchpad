@@ -61,3 +61,8 @@ header {
 .Favorite:target{
   background-color: rgba(117, 117, 117, 0);
 }
+
+.loginState{
+  float: inline-end;
+  color: #ffc107;
+}

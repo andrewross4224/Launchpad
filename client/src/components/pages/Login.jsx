@@ -7,7 +7,8 @@ export default function Home() {
   const [login, setLogin] = useState(true);
   return (
     <div>
-      {login ? (<Form className='form px-3 py-5'>
+      {login ? (<Form className='form px-3 pt-2 pb-2'>
+        <h1 className='text-center'>Login</h1>
         < Form.Group className="mb-3" controlId="formBasicEmail" >
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
@@ -16,19 +17,20 @@ export default function Home() {
           </Form.Label>
         </Form.Group >
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3 pb-4" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
         <Button variant="outline-warning" type="submit">
           Submit
         </Button>
-        <Button variant="outline-warning" onClick={setLogin(login => !login)}>
+        <a className='loginState mt-3' onClick={() => { setLogin(login => !login) }}>
           Signup?
-        </Button>
+        </a>
       </Form >)
         :
-        <Form className='form px-3 py-5'>
+        <Form className='form px-3 pt-2 pb-2'>
+          <h1 className='text-center'>Signup</h1>
           < Form.Group className="mb-3" controlId="formBasicEmail" >
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
@@ -37,16 +39,16 @@ export default function Home() {
             </Form.Label>
           </Form.Group >
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3 pb-4" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
           <Button variant="outline-warning" type="submit">
             Submit
           </Button>
-          <Button variant="outline-warning" onClick={setLogin(login => !login)}>
-          Login?
-        </Button>
+          <a className='loginState mt-3' onClick={() => { setLogin(login => !login) }}>
+            Login?
+          </a>
         </Form >}
     </div>
   );

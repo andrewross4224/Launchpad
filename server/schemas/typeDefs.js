@@ -37,7 +37,7 @@ const typeDefs = `
 
     type Query {
         me: User
-        comments(username: String): [Comment]
+        comments(launchId: String): [Comment]
     }
 
     type Mutation {

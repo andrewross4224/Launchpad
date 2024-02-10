@@ -2,6 +2,10 @@ import Form from 'react-bootstrap/form'
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useState } from 'react';
+import Dropdown from '../Dropdown'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 export default function Home() {
   const [login, setLogin] = useState(true);
@@ -42,6 +46,16 @@ export default function Home() {
           <Form.Group className="mb-3 pb-4" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <Form.Group className="mb-3 pb-4" controlId="formBasicDropdown">
+            <Row>
+              <Form.Label>Please Select a Default Location</Form.Label>
+            </Row>
+            <Row>
+              <Col className='drop'>
+                <Dropdown />
+              </Col>
+            </Row>
           </Form.Group>
           <Button variant="outline-warning" type="submit">
             Submit

@@ -52,7 +52,7 @@ export const SAVE_LAUNCH = gql`
   mutation saveLaunch($launchId: ID!) {
     saveLaunch(launchId: $launchId) {
       _id
-     launchDates
+     launchDate
      location
      missionDescription
      slug

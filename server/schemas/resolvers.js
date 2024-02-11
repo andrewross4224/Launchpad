@@ -27,7 +27,7 @@ const resolvers = {
       return { token, user };
     },
     addUser: async (parent, args) => {
-      const user  = await User.create(args);
+      const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
     },
@@ -54,14 +54,20 @@ const resolvers = {
     },
     saveLaunch: async (parent, { launchData }, context) => {
       if (context.user) {
-        const data = await Launch.saveLaunch(launchData);
+        const data = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { savedLaunches: launchData } },
+          { new: true });
         return data;
       }
       throw AuthenticationError;
     },
-    removeLaunch: async (parent, { launchData }, context) => {
+    removeLaunch: async (parent, { launchId }, context) => {
       if (context.user) {
-        const data = await Launch.removeLaunch(launchData);
+        const data = await Launch.removeLaunch(
+          { _id: context.user._id },
+          { $pull: { savedLaunches: { launchId } } },
+          { new: true });
         return data;
       }
       throw AuthenticationError;

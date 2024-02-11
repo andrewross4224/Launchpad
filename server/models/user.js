@@ -17,11 +17,11 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        require: true,
+        required: true,
     },
     location: {
         type: String,
-        required: true,
+        required:true
     },
     savedLaunches: [Launches],
 }

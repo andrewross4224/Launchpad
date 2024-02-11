@@ -1,7 +1,7 @@
 const typeDefs = `
     type User {
         _id: ID!
-        username: String
+        userName: String
         email: String
         location: String
         savedLaunches: [Launch]
@@ -19,7 +19,7 @@ const typeDefs = `
         launchDate: String
         location: String
         missionDescription: String
-        slug: string
+        slug: String
     }
 
     type Auth {
@@ -32,7 +32,7 @@ const typeDefs = `
         launchDate: String
         location: String
         missionDescription: String
-        slug: string
+        slug: String
     }
 
     type Query {
@@ -42,10 +42,12 @@ const typeDefs = `
 
     type Mutation {
         login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!): Auth
+        addUser(userName: String!, email: String!, password: String! location: String!): Auth
         saveLaunch(launchData: LaunchInput!): User
         removeLaunch(launchId: ID!): User
-        addComment(commentText: ID!, commentText: String!): Comment
+        addComment(commentId: ID!, commentText: String!): Comment
         removeComment(commentId: ID!): Comment
     }
 `
+
+module.exports = typeDefs;

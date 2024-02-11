@@ -8,12 +8,12 @@ const resolvers = {
         const data = await User.findOne({ _id: context.user._id }).select(
           "-__v -password"
         );
-        return data;
+        return data.username;
       }
       throw new AuthenticationError("Please logged in");
     },
   },
-  mutation: {
+  Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -27,7 +27,7 @@ const resolvers = {
       return { token, user };
     },
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      const user  = await User.create(args);
       const token = signToken(user);
       return { token, user };
     },
@@ -53,18 +53,21 @@ const resolvers = {
       throw new AuthenticationError("You are not authorized to do that.");
     },
     saveLaunch: async (parent, { launchData }, context) => {
-        if (context.user) {
-          const data = await Launch.saveLaunch(launchData);
-          return data;
-        }
-          throw new AuthenticationError("You must be logged in to book a trip.");
-      },
-      removeLaunch: async (parent, { LocationData }, context) => {
-        if (context.user) {
-          const data = await Launch.removeLaunch(launchData);
-          return data;
-        }
-          throw new AuthenticationError("You must be logged in to book a trip.");
-      },
+      if (context.user) {
+        const data = await Launch.saveLaunch(launchData);
+        return data;
+      }
+      throw new AuthenticationError("You must be logged in to book a trip.");
+    },
+    removeLaunch: async (parent, { launchData }, context) => {
+      if (context.user) {
+        const data = await Launch.removeLaunch(launchData);
+        return data;
+      }
+      throw new AuthenticationError("You must be logged in to book a trip.");
+    },
   },
 };
+
+
+module.exports = resolvers;

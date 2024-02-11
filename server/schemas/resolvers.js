@@ -4,24 +4,26 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
+      console.log(context)
+      console.log(args)
       if (context.user) {
         const data = await User.findOne({ _id: context.user._id }).select(
           "-__v -password"
         );
-        return data.username;
+        return data;
       }
-      throw new AuthenticationError("Please logged in");
+      throw AuthenticationError;
     },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw AuthenticationError;
       }
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw AuthenticationError;
       }
       const token = signToken(user);
       return { token, user };
@@ -39,7 +41,7 @@ const resolvers = {
         });
         return data;
       }
-      throw new AuthenticationError("Please logged in");
+      throw AuthenticationError;
     },
     removeComment: async (parent, { commentId }, context) => {
       if (context.user) {
@@ -50,21 +52,21 @@ const resolvers = {
         const comment = await Comments.findById(commentId);
         return data;
       }
-      throw new AuthenticationError("You are not authorized to do that.");
+      throw AuthenticationError;
     },
     saveLaunch: async (parent, { launchData }, context) => {
       if (context.user) {
         const data = await Launch.saveLaunch(launchData);
         return data;
       }
-      throw new AuthenticationError("You must be logged in to book a trip.");
+      throw AuthenticationError;
     },
     removeLaunch: async (parent, { launchData }, context) => {
       if (context.user) {
         const data = await Launch.removeLaunch(launchData);
         return data;
       }
-      throw new AuthenticationError("You must be logged in to book a trip.");
+      throw AuthenticationError;
     },
   },
 };

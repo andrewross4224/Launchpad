@@ -20,6 +20,5 @@ const Launches = new Schema({
         type: String,
         required: true
     }
-})
-
-module.exports = Launches;
+    });
+    model.exports = launchSchema;

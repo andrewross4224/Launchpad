@@ -49,5 +49,4 @@ const typeDefs = `
         removeComment(commentId: ID!): Comment
     }
 `
-
 module.exports = typeDefs;

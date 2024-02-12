@@ -21,4 +21,4 @@ const Launches = new Schema({
         required: true
     }
     });
-    model.exports = launchSchema;
+    model.exports = Launches;

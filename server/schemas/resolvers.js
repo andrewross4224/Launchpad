@@ -53,7 +53,9 @@ const resolvers = {
       throw AuthenticationError;
     },
     saveLaunch: async (parent, { launchData }, context) => {
+      console.log(context.user)
       if (context.user) {
+
         const data = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { savedLaunches: launchData } },

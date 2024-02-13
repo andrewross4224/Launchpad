@@ -8,10 +8,11 @@ const typeDefs = `
     }
 
     type Comment {
-        _id: ID!
+        _id: ID
         commentText: String
         createdAt: String
         launchId: String
+        commentAuthor: String
     }
 
     type Launch {
@@ -45,7 +46,7 @@ const typeDefs = `
         addUser(userName: String!, email: String!, password: String! location: String!): Auth
         saveLaunch(launchData: LaunchInput!): User
         removeLaunch(launchId: ID!): User
-        addComment(commentId: ID!, commentText: String!): Comment
+        addComment(commentText: String!): Comment
         removeComment(commentId: ID!): Comment
     }
 `

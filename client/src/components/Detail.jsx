@@ -68,7 +68,7 @@ function detail({launchId}) {
                         <Form.Control placeholder='Type comment here...'></Form.Control>
                     </Form>
                     <Row >
-                        <Col md={{ span: 4, offset: 10}}>
+                        <Col md={{ span: 4, offset: 8}}>
                             <Button variant="outline-warning" type="submit">Submit</Button>
                         </Col>
                     </Row>

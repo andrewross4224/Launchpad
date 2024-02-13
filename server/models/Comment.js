@@ -18,8 +18,7 @@ const commentSchema = new Schema({
     },
     commentAuthor: {
         type: String,
-        required: true,
-        trime: true
+        trim: true
     }
 });
 

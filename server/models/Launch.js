@@ -1,7 +1,7 @@
 const { Schema, model } = require ('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const launchSchema = new Schema({
+const Launches = new Schema({
     launchDate: {
         type: Date,
         default: Date.now,
@@ -21,4 +21,4 @@ const launchSchema = new Schema({
         required: true
     }
     });
-    model.exports = launchSchema;
+    model.exports = Launches;

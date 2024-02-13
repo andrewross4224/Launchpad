@@ -10,18 +10,18 @@ const resolvers = {
         );
         return data;
       }
-      throw new AuthenticationError("Please logged in");
+      throw AuthenticationError;
     },
   },
-  mutation: {
+  Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw AuthenticationError;
       }
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw AuthenticationError;
       }
       const token = signToken(user);
       return { token, user };
@@ -31,15 +31,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addComment: async (parent, Comments, context) => {
+    addComment: async (parent, { commentText  }, context) => {
       if (context.user) {
         const data = await Comments.create({
-          ...Comments,
-          username: context.user.username,
+          commentText,
+          commentAuthor: context.user.username,
         });
         return data;
       }
-      throw new AuthenticationError("Please logged in");
+      throw AuthenticationError;
     },
     removeComment: async (parent, { commentId }, context) => {
       if (context.user) {
@@ -50,21 +50,32 @@ const resolvers = {
         const comment = await Comments.findById(commentId);
         return data;
       }
-      throw new AuthenticationError("You are not authorized to do that.");
+      throw AuthenticationError;
     },
     saveLaunch: async (parent, { launchData }, context) => {
-        if (context.user) {
-          const data = await Launch.saveLaunch(launchData);
-          return data;
-        }
-          throw new AuthenticationError("You must be logged in to book a trip.");
-      },
-      removeLaunch: async (parent, { LocationData }, context) => {
-        if (context.user) {
-          const data = await Launch.removeLaunch(launchData);
-          return data;
-        }
-          throw new AuthenticationError("You must be logged in to book a trip.");
-      },
+      console.log(context.user)
+      if (context.user) {
+
+        const data = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { savedLaunches: launchData } },
+          { new: true });
+        return data;
+      }
+      throw AuthenticationError;
+    },
+    removeLaunch: async (parent, { launchId }, context) => {
+      if (context.user) {
+        const data = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedLaunches: { launchId } } },
+          { new: true });
+        return data;
+      }
+      throw AuthenticationError;
+    },
   },
 };
+
+
+module.exports = resolvers;

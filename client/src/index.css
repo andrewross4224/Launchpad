@@ -71,3 +71,10 @@ header {
   display: flex;
   justify-content: center;
 }
+
+.show {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(17px);
+  background-color: rgba(117, 117, 117, 0.3);
+  border-radius: 0 0 25px 25px;
+}

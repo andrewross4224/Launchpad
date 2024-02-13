@@ -10,11 +10,6 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 export default function Home() {
     return (
         <Container>
-            <Row className='m-3'>
-                <Col className='drop'>
-                    <Dropdown />
-                </Col>
-            </Row>
             <Row>
                 <Col xs={12} md={4} className='p-3'>
                     <Card />

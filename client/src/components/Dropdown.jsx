@@ -15,15 +15,11 @@ Location ID's inorder:
 function DropMenu() {
     return (
         <DropdownButton
-        data-bs-theme="dark" 
-        className='dropBtn' 
+        data-bs-theme="dark"  
         as={ButtonGroup} 
-        key='down-centered' 
-        id='dropdown-button-drop-center'
+        key='down-centered'
         drop='down-centered'
-        variant='warning'
         title='Locations'>
-                
                 <Dropdown.Item>Cape Canaveral, FL, USA</Dropdown.Item> 
                 <Dropdown.Item>Kennedy Space Center, FL, USA</Dropdown.Item>
                 <Dropdown.Item>Tanegashima Space Center, Japan</Dropdown.Item>

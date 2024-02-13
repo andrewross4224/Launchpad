@@ -26,9 +26,9 @@ export default function Home() {
     e.preventDefault();
     console.log(userSignupData)
     try {
-      const { data } = await addUser({ variables: { ...userSignupData } })
+      const { data } = await addUser({ variables: { userName: userSignupData.SIGNUPusername, email: userSignupData.SIGNUPemail, password: userSignupData.SIGNUPpassword } })
       console.log(data)
-      Auth.login(token);
+      Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
     }
@@ -66,7 +66,7 @@ export default function Home() {
         </a>
       </Form >)
         :
-        <Form className='form px-3 pt-2 pb-2' onSubmit={handleSignup}>
+        (<Form className='form px-3 pt-2 pb-2' onSubmit={handleSignup}>
           <h1 className='text-center'>Signup</h1>
           <Form.Group className="mb-3 pb-4" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
@@ -101,7 +101,7 @@ export default function Home() {
           <a className='loginState mt-3' onClick={() => { setLogin(login => !login) }}>
             Login?
           </a>
-        </Form >}
+        </Form >)}
     </div>
   );
 }

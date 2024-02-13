@@ -64,10 +64,15 @@ export const REMOVE_LAUNCH = gql`
   mutation removeLaunch($launchId: ID!) {
     saveLaunch(launchId: $launchId) {
       _id
-     launchDate
-     location
-     missionDescription
-     slug
+      userName
+     email
+     savedLaunches {
+      launchId
+      slug 
+      location
+      launchDate
+      missionDescription
+     }
     }
   }
 `;

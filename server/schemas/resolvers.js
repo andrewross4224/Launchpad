@@ -66,7 +66,7 @@ const resolvers = {
     },
     removeLaunch: async (parent, { launchId }, context) => {
       if (context.user) {
-        const data = await Launch.removeLaunch(
+        const data = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $pull: { savedLaunches: { launchId } } },
           { new: true });

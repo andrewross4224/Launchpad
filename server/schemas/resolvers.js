@@ -31,11 +31,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addComment: async (parent, { commentText}, context) => {
+    addComment: async (parent, { commentText  }, context) => {
       if (context.user) {
         const data = await Comments.create({
-          ...Comments,
-          username: context.user.username,
+          commentText,
+          commentAuthor: context.user.username,
         });
         return data;
       }

@@ -45,7 +45,6 @@ const resolvers = {
       if (context.user) {
         const data = await Comments.findOneAndDelete({
           _id: commentId,
-          username: context.user.username,
         });
         const comment = await Comments.findById(commentId);
         return data;

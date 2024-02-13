@@ -1,26 +1,26 @@
 const typeDefs = `
     type User {
         _id: ID!
-        userName: String
-        email: String
-        location: String
+        userName: String!
+        email: String!
+        location: String!
         savedLaunches: [Launch]
     }
 
     type Comment {
         _id: ID
-        commentText: String
-        createdAt: String
-        launchId: String
-        commentAuthor: String
+        commentText: String!
+        createdAt: String!
+        launchId: String!
+        commentAuthor: String!
     }
 
     type Launch {
         launchId: ID!
-        launchDate: String
-        location: String
-        missionDescription: String
-        slug: String
+        launchDate: String!
+        location: String!
+        missionDescription: String!
+        slug: String!
     }
 
     type Auth {
@@ -36,9 +36,16 @@ const typeDefs = `
         slug: String
     }
 
+    input CommentInput {
+        launchId: ID!
+        commentText: String!
+        commentAuthor: String!
+        createdAt: String!
+    }
+
     type Query {
         me: User
-        comments(launchId: String): [Comment]
+        comments(launchId: String!): [Comment]
     }
 
     type Mutation {
@@ -46,7 +53,7 @@ const typeDefs = `
         addUser(userName: String!, email: String!, password: String! location: String!): Auth
         saveLaunch(launchData: LaunchInput!): User
         removeLaunch(launchId: ID!): User
-        addComment(commentText: String!): Comment
+        addComment(commentData: CommentInput!): Comment
         removeComment(commentId: ID!): Comment
     }
 `

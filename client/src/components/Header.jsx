@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Dropdown from './Dropdown'
+import Auth from '../utils/auth'
 
 function Header({ loggedIn }) {
     return (

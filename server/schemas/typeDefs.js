@@ -43,7 +43,7 @@ const typeDefs = `
 
     type Mutation {
         login(email: String!, password: String!): Auth
-        addUser(userName: String!, email: String!, password: String! location: String!): Auth
+        addUser(userName: String!, email: String!, password: String!, location: String): Auth
         saveLaunch(launchData: LaunchInput!): User
         removeLaunch(launchId: ID!): User
         addComment(commentText: String!): Comment

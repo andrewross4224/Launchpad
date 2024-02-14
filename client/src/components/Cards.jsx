@@ -12,7 +12,7 @@ function OurCard() {
             <Card.Title>Spacecraft</Card.Title>
             <Card.Title>Date</Card.Title>
             <Card.Title>Time</Card.Title>
-            <Button variant="outline-warning" href=''>Launch Details</Button>
+            <Button variant="outline-warning" href='/single'>Launch Details</Button>
         </Card>
     )
 }

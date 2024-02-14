@@ -11,10 +11,10 @@ import Form from 'react-bootstrap/form'
 
 
 function detail({launchId}) {
-    // const data = useQuery(QUERY_COMMENTS, {
-    //     variables: launchId
-    // })
-
+    const data = useQuery(QUERY_COMMENTS, {
+        variables: launchId
+    })
+    console.log(data)
     return (
         <Card className='p-2'>
             <Button variant="outline-warning" className='position-absolute Favorite' href=''><CiStar /></Button>
@@ -50,19 +50,6 @@ function detail({launchId}) {
                     </Col>
                 </Row>
 
-
-            {/* {data.comments.length > 0 ? (
-            <Card>
-                <Card>
-                    <Card.Title>Pulled human name</Card.Title></Card>
-                <Card.Body>This week, you’ll take starter code with a fully functioning Google Books API search engine built with a RESTful API, and refactor it to be a GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API. It's already set up to allow users to save book searches to the back end.</Card.Body>
-            </Card>
-            ) : (
-                <Card>
-                    <Card>
-                        <Card.Title>No comments yet!</Card.Title></Card>
-                </Card>
-            )} */}
             <Card.Header className='large-title'>Make a new comment?</Card.Header>
                     <Form className='p-2'>
                         <Form.Control placeholder='Type comment here...'></Form.Control>
@@ -74,9 +61,23 @@ function detail({launchId}) {
                     </Row>
 
             <Card.Header className='large-title'>Comments:</Card.Header>
+            
+            {/* {data.comments.length > 0 ? (
+                data.comments.map(comment => 
+                    <Card>
+                        <Card>
+                            <Card.Title>{comment.commentAuthor}</Card.Title></Card>
+                        <Card.Body>{comment.commentText}.</Card.Body>
+                    </Card>
+                )) : (
+                    <Card>
+                        <Card>
+                            <Card.Title>No comments yet!</Card.Title></Card>
+                    </Card>
+                )} */}
             <Row className='justify-content-md-center'>
                 <Col xs={12} md={3} className='p-3'>
-                    <Button variant="outline-warning" href='' className='mt-5' >Back to home?</Button>
+                    <Button variant="outline-warning" href='/' className='mt-5' >Back to home?</Button>
                 </Col>
             </Row>
         </Card>

@@ -12,10 +12,9 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    comment: async (parent, { launchId }) => {
-      return Comments.find({ launchId: launchId
-      })
-    }
+    comment: async (parent, args) => {
+      return Comments.find({ launchId: args.launchId });
+    },
   },
   
   Mutation: {
@@ -36,10 +35,13 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addComment: async (parent, { commentData }, context) => {
+    addComment: async (parent, { commentAuthor, commentText, createdAt, launchId }, context) => {
       if (context.user) {
         const data = await Comments.create({
-          commentData,
+          commentAuthor,
+          commentText,
+          createdAt,
+          launchId
         });
         return data;
       }

@@ -9,13 +9,17 @@ import { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client'
 import Auth from '../../utils/auth'
 
-import { ADD_USER } from '../../utils/mutations';
+import { ADD_USER, LOGIN_USER } from '../../utils/mutations';
 
 
 export default function Home() {
 
+  const [userLoginData, setLoginData] = useState({ LOGINemail: '', LOGINpassword:''})
   const [userSignupData, setSignupData] = useState({ SIGNUPusername: '', SIGNUPemail: '', SIGNUPpassword: '' });
+
   const [addUser, { error }] = useMutation(ADD_USER);
+
+  const [login, { error: loginErr }] = useMutation(LOGIN_USER);
 
   const handleSignupChange = (event) => {
     const { name, value } = event.target;
@@ -24,7 +28,6 @@ export default function Home() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    console.log(userSignupData)
     try {
       const { data } = await addUser({ variables: { userName: userSignupData.SIGNUPusername, email: userSignupData.SIGNUPemail, password: userSignupData.SIGNUPpassword } })
       console.log(data)
@@ -40,11 +43,11 @@ export default function Home() {
     });
   };
 
-  const [login, setLogin] = useState(true)
+  const [loginForm, setLoginForm] = useState(true)
 
   return (
     <div>
-      {login ? (<Form className='form px-3 pt-2 pb-2'>
+      {loginForm ? (<Form className='form px-3 pt-2 pb-2'>
         <h1 className='text-center'>Login</h1>
         < Form.Group className="mb-3" controlId="formBasicEmail" >
           <Form.Label>Email address</Form.Label>
@@ -61,7 +64,7 @@ export default function Home() {
         <Button variant="outline-warning" type="submit">
           Submit
         </Button>
-        <a className='loginState mt-3' onClick={() => { setLogin(login => !login) }}>
+        <a className='loginState mt-3' onClick={() => { setLoginForm(loginForm => !loginForm) }}>
           Signup?
         </a>
       </Form >)
@@ -98,7 +101,7 @@ export default function Home() {
           <Button variant="outline-warning" type="submit">
             Submit
           </Button>
-          <a className='loginState mt-3' onClick={() => { setLogin(login => !login) }}>
+          <a className='loginState mt-3' onClick={() => { setLoginForm(loginForm => !loginForm) }}>
             Login?
           </a>
         </Form >)}

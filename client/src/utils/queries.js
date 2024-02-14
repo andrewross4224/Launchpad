@@ -21,6 +21,7 @@ export const QUERY_COMMENTS = gql`
       commentText
       createdAt
       launchId
+      commentAuthor
     }
   }
 `;

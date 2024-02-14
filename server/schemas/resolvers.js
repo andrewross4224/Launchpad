@@ -13,6 +13,7 @@ const resolvers = {
       throw AuthenticationError;
     },
   },
+  
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -31,11 +32,10 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addComment: async (parent, { commentText  }, context) => {
+    addComment: async (parent, { commentData }, context) => {
       if (context.user) {
         const data = await Comments.create({
-          commentText,
-          commentAuthor: context.user.username,
+          commentData,
         });
         return data;
       }

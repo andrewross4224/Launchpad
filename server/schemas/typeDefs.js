@@ -36,9 +36,16 @@ const typeDefs = `
         slug: String
     }
 
+    input CommentInput {
+        launchId: ID!
+        commentText: String!
+        commentAuthor: String!
+        createdAt: String!
+    }
+
     type Query {
         me: User
-        comments(launchId: String): [Comment]
+        comments(launchId: String!): [Comment]
     }
 
     type Mutation {
@@ -46,7 +53,7 @@ const typeDefs = `
         addUser(userName: String!, email: String!, password: String!, location: String): Auth
         saveLaunch(launchData: LaunchInput!): User
         removeLaunch(launchId: ID!): User
-        addComment(commentText: String!): Comment
+        addComment(commentData: CommentInput!): Comment
         removeComment(commentId: ID!): Comment
     }
 `

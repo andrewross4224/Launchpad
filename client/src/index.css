@@ -18,7 +18,6 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
   min-width: 320px;
   min-height: 100vh;
   background-image: url('https://science.nasa.gov/wp-content/uploads/2023/06/webb-flickr-52259221868-30e1c78f0c-4k-jpg.webp');
@@ -27,13 +26,11 @@ body {
 }
 
 header {
-  width: 50%;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(17px);
   background-color: rgba(117, 117, 117, 0.3);
   padding: 10px;
   border-radius: 0 0 25px 25px;
-  margin-left: 25%;
 }
 .card {
   backdrop-filter: blur(17px);
@@ -54,11 +51,7 @@ header {
   border: none;
 }
 
-.Favorite:hover{
-  background-color: rgba(117, 117, 117, 0);
-}
-
-.Favorite:target{
+.Favorite:hover, .Favorite:target{
   background-color: rgba(117, 117, 117, 0);
 }
 
@@ -86,3 +79,107 @@ header {
 .large-title {
   font-size: 200%;
 }
+
+/* CSS FOR LOADER */
+.loading {
+  margin-top: 10%;
+  color: white;
+}
+
+.loaderRocket {
+  position:absolute;
+    width:50px;
+    height:50px;
+    animation:infinite-spinning 4s infinite;
+    animation-timing-function:linear;
+    transform-origin:335% 500%;
+}
+
+@keyframes infinite-spinning {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.moon {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  margin: -100px;
+  width: 200px;
+  height: 200px;
+  background: #c7cbd0;
+  border-radius: 50%;
+  box-shadow: inset -25px 0px 0 0px #9098a1;
+  transition: transform 0.2s ease-in-out;
+}
+
+.moon:hover {
+  transform: scale(1.2);
+}
+
+.rocket{
+  position: absolute;
+  list-style: none;
+  background: #737277;
+  border-radius: 50%;
+}
+.rocket1 {
+left: 25px;
+  top: 60px;
+  width: 50px;
+  height: 50px;
+  box-shadow: inset 6px -2px 0 0px #414043;
+}
+.rocket2 {
+  left: 150px;
+  top: 50px;
+  width: 25px;
+  height: 25px;
+  box-shadow: inset 3px -1px 0 0px #414043;
+}
+
+.rocket3 {
+  left: 100px;
+  top: 150px;
+  width: 25px;
+  height: 25px;
+  box-shadow: inset 3px -1px 0 0px #414043;
+}
+
+.rocket4 {
+  left: 50px;
+  top: 150px;
+  width: 12.5px;
+  height: 12.5px;
+  box-shadow: inset 2.4px -0.8px 0 0px #414043;
+}
+
+.rocket5 {
+  left: 87.5px;
+  top: 16.66666667px;
+  width: 12.5px;
+  height: 12.5px;
+  box-shadow: inset 2.4px -0.8px 0 0px #414043;
+}
+
+.rocket6 {
+  left: 114.28571429px;
+  top: 80px;
+  width: 12.5px;
+  height: 12.5px;
+  box-shadow: inset 2.4px -0.8px 0 0px #414043;
+}
+
+.rocket7 {
+  left: 181.81818182px;
+  top: 100px;
+  width: 12.5px;
+  height: 12.5px;
+  box-shadow: inset 2.4px -0.8px 0 0px #414043;
+}
+
+/* END CSS FOR LOADER */

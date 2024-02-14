@@ -21,7 +21,6 @@ const userSchema = new Schema({
     },
     location: {
         type: String,
-        required:true
     },
     savedLaunches: [Launches],
 }

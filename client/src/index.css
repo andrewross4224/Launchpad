@@ -54,11 +54,7 @@ header {
   border: none;
 }
 
-.Favorite:hover{
-  background-color: rgba(117, 117, 117, 0);
-}
-
-.Favorite:target{
+.Favorite:hover, .Favorite:target{
   background-color: rgba(117, 117, 117, 0);
 }
 
@@ -88,6 +84,10 @@ header {
 }
 
 /* CSS FOR LOADER */
+.loading {
+  margin-bottom: 120%;
+  color: white;
+}
 
 .loaderRocket {
   position:absolute;

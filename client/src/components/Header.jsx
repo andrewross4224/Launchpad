@@ -4,7 +4,7 @@ import Auth from '../utils/auth'
 
 function Header({ loggedIn }) {
     return (
-        <header className="fixed-top">
+        <header>
             <h1 className="text-center">Launch Pad</h1>
             <ul className="nav nav-tabs justify-content-center py-2">
                 <li className="nav-item">

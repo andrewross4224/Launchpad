@@ -16,6 +16,7 @@ export default function Home() {
     const callAPI = async (query) => {
         const searchResult = await axios.get('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=25')
         setResults(searchResult.data.results);
+        setLoading(false)
     };
 
     useEffect(() => {
@@ -45,17 +46,16 @@ export default function Home() {
                 </div>
                 </>)
                 :
-                (<Container results={results}>
-                    <a href={results}>click this</a>
+                (<Container>
                     <Row>
                         <Col xs={12} md={4} className='p-3'>
-                            <Card />
+                            <Card launch={results[0]}/>
                         </Col>
                         <Col xs={12} md={4} className='p-3'>
-                            <Card />
+                            <Card launch={results[1]}/>
                         </Col>
                         <Col xs={12} md={4} className='p-3'>
-                            <Card />
+                            <Card launch={results[2]}/>
                         </Col>
                     </Row>
                 </Container>

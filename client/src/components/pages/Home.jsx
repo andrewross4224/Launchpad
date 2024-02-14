@@ -16,9 +16,9 @@ export default function Home() {
     const [results, setResults] = useState({});
 
     const callAPI = async (query) => {
-        const searchResult = await axios.get('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=25')
+        const searchResult = await axios.get('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100')
         setResults(searchResult.data.results);
-        setLoading(false);
+        setLoading(false)
     };
 
     useEffect(() => {
@@ -32,7 +32,18 @@ export default function Home() {
     return (
         <main>
             {loading ?
-                (<div>loading</div>)
+                (<div className="moon">
+                    <img src="https://cdn2.iconfinder.com/data/icons/thesquid-ink-40-free-flat-icon-pack/64/space-rocket-512.png" style={{"height" : "20px", "width" : "30px"}} className="loaderRocket" />
+                    <ul>
+                        <li className='rocket rocket1'></li>
+                        <li className='rocket rocket2'></li>
+                        <li className='rocket rocket3'></li>
+                        <li className='rocket rocket4'></li>
+                        <li className='rocket rocket5'></li>
+                        <li className='rocket rocket6'></li>
+                        <li className='rocket rocket7'></li>
+                    </ul>
+                </div>)
                 :
                 (<Container results={results}>
                     <a href={results}>click this</a>

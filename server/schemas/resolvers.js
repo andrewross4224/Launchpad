@@ -12,6 +12,10 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    comment: async (parent, { launchId }) => {
+      return Comments.find({ launchId: launchId
+      })
+    }
   },
   
   Mutation: {

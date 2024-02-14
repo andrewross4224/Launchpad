@@ -1,26 +1,26 @@
 const typeDefs = `
     type User {
         _id: ID!
-        userName: String!
-        email: String!
-        location: String!
+        userName: String
+        email: String
+        location: String
         savedLaunches: [Launch]
     }
 
     type Comment {
         _id: ID
-        commentText: String!
-        createdAt: String!
-        launchId: String!
-        commentAuthor: String!
+        commentText: String
+        createdAt: String
+        launchId: String
+        commentAuthor: String
     }
 
     type Launch {
         launchId: ID!
-        launchDate: String!
-        location: String!
-        missionDescription: String!
-        slug: String!
+        launchDate: String
+        location: String
+        missionDescription: String
+        slug: String
     }
 
     type Auth {

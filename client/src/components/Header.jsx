@@ -19,7 +19,7 @@ function Header() {
                             <NavLink to='/launches' className='nav-link'>Saved Launches</NavLink>
                         </Col>
                         <Col md={2}>
-                            <NavLink onClick={Auth.logout} to='/login' className='nav-link'>Logout</NavLink>
+                            <NavLink onClick={Auth.logout} to='/404' className='nav-link'>Logout</NavLink>
                         </Col>
                     </>
                 )

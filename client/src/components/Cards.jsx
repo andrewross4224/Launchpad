@@ -4,6 +4,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import dayjs from 'dayjs'
 import { CiStar } from "react-icons/ci";
 import utc from 'dayjs/plugin/utc'
+import { Link } from 'react-router-dom';
 
 function OurCard({launch}) {
     // Functions for formating date
@@ -19,7 +20,7 @@ function OurCard({launch}) {
             <Card.Title>{launch.rocket.configuration.full_name}</Card.Title>
             <Card.Title>{formatDate(launch.window_start)}</Card.Title>
             <Card.Title>{formatTime(launch.window_start)}</Card.Title>
-            <Button variant="outline-warning" href='/single'>Launch Details</Button>
+            <Link className='btn btn-outline-warning' to='/single' state={launch}>Launch Details</Link>
         </Card>
     )
 }

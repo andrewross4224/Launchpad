@@ -14,7 +14,7 @@ function OurCard({launch}) {
     return (
         <Card className='p-2'>
             <Button variant="outline-warning" className='position-absolute Favorite' href=''><CiStar /></Button>
-            <Card.Img variant='top' src={launch.image} />
+            <Card.Img variant='top' className='cardImg' src={launch.image} />
             <Card.Title>{launch.pad.location.name}</Card.Title>
             <Card.Title>{launch.rocket.configuration.full_name}</Card.Title>
             <Card.Title>{formatDate(launch.window_start)}</Card.Title>

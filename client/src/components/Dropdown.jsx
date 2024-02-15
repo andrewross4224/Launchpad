@@ -1,7 +1,4 @@
-import Dropdown from "react-bootstrap/Dropdown"
-import Form from 'react-bootstrap/form'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 /* 
 Location ID's inorder:
     12
@@ -14,26 +11,18 @@ Location ID's inorder:
 
 function DropMenu() {
     return (
-        <DropdownButton
+        <NavDropdown
         data-bs-theme="dark"  
-        as={ButtonGroup} 
         key='down-centered'
         drop='down-centered'
         title='Locations'>
-                <Dropdown.Item>Cape Canaveral, FL, USA</Dropdown.Item> 
-                <Dropdown.Item>Kennedy Space Center, FL, USA</Dropdown.Item>
-                <Dropdown.Item>Tanegashima Space Center, Japan</Dropdown.Item>
-                <Dropdown.Item>Baikonur Cosmodrome, Republic of Kazakhstan</Dropdown.Item>
-                <Dropdown.Item>Satish Dhawan Space Centre, India</Dropdown.Item>
-                <Dropdown.Item>Onenui Station, Mahia Peninsula, New Zealand</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item>
-                    <Form>
-                        <Form.Label>Search other Places?</Form.Label>
-                        <Form.Control placeholder="Search"></Form.Control>
-                    </Form>
-                </Dropdown.Item>
-        </DropdownButton>
+                <NavDropdown.Item>Cape Canaveral, FL, USA</NavDropdown.Item> 
+                <NavDropdown.Item>Kennedy Space Center, FL, USA</NavDropdown.Item>
+                <NavDropdown.Item>Tanegashima Space Center, Japan</NavDropdown.Item>
+                <NavDropdown.Item>Baikonur Cosmodrome, Republic of Kazakhstan</NavDropdown.Item>
+                <NavDropdown.Item>Satish Dhawan Space Centre, India</NavDropdown.Item>
+                <NavDropdown.Item>Onenui Station, Mahia Peninsula, New Zealand</NavDropdown.Item>
+        </NavDropdown>
     )
 }
 

@@ -4,7 +4,7 @@ export const QUERY_ME = gql`
   {
     me {
       _id
-      username
+      userName
       email
       savedLaunches
       tokens {
@@ -15,8 +15,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_COMMENTS = gql`
-  query comments($username: String) {
-    comments(username: $username) {
+  query comments($userName: String) {
+    comments(userName: $userName) {
       _id
       commentText
       createdAt

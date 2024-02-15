@@ -10,6 +10,7 @@ import { useQuery, useMutation } from '@apollo/client'
 import Auth from '../../utils/auth'
 
 import { ADD_USER, LOGIN_USER } from '../../utils/mutations';
+import Container from 'react-bootstrap/esm/Container';
 
 
 export default function Home() {
@@ -17,27 +18,45 @@ export default function Home() {
   const [userLoginData, setLoginData] = useState({ LOGINemail: '', LOGINpassword:''})
   const [userSignupData, setSignupData] = useState({ SIGNUPusername: '', SIGNUPemail: '', SIGNUPpassword: '' });
 
+  const [login, { error: loginErr }] = useMutation(LOGIN_USER);
   const [addUser, { error }] = useMutation(ADD_USER);
 
-  const [login, { error: loginErr }] = useMutation(LOGIN_USER);
+  const handleLoginChange = (event) => {
+    const { name, value } = event.target;
+    setLoginData({ ...userLoginData, [name]: value });
+  };
 
   const handleSignupChange = (event) => {
     const { name, value } = event.target;
     setSignupData({ ...userSignupData, [name]: value });
   };
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await login({ variables: { email: userLoginData.LOGINemail, password: userLoginData.LOGINpassword } })
+    } catch (err) {
+      console.error(err);
+    }
+
+    setSignupData({
+      LOGINemail: '',
+      LOGINpassword: '',
+    });
+  };
+
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await addUser({ variables: { userName: userSignupData.SIGNUPusername, email: userSignupData.SIGNUPemail, password: userSignupData.SIGNUPpassword } })
-      console.log(data)
+      console.log(userSignupData)
+      const { data } = await addUser({ variables: { userName: userSignupData.SIGNUPusername, email: userSignupData.SIGNUPemail, password: userSignupData.SIGNUPpassword, SIGNUPlocation: 'mylocation'} })
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
     }
 
     setSignupData({
-      SIGNUPusername: '',
+      userName: '',
       SIGNUPemail: '',
       SIGNUPpassword: '',
     });
@@ -46,12 +65,12 @@ export default function Home() {
   const [loginForm, setLoginForm] = useState(true)
 
   return (
-    <div>
-      {loginForm ? (<Form className='form px-3 pt-2 pb-2'>
+    <Container className='loginContainer'>
+      {loginForm ? (<Form className='form px-3 pt-2 pb-2' onSubmit={handleLogin}>
         <h1 className='text-center'>Login</h1>
         < Form.Group className="mb-3" controlId="formBasicEmail" >
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control type="email" name='LOGINemail' placeholder="Enter email" onChange={handleLoginChange} value={userLoginData.LOGINemail}/>
           <Form.Label id="disclaim">
             We'll never share your email with anyone else.
           </Form.Label>
@@ -59,7 +78,7 @@ export default function Home() {
 
         <Form.Group className="mb-3 pb-4" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control type="password" name='LOGINpassword' placeholder="Password" onChange={handleLoginChange} value={userLoginData.LOGINpassword}/>
         </Form.Group>
         <Button variant="outline-warning" type="submit">
           Submit
@@ -73,12 +92,12 @@ export default function Home() {
           <h1 className='text-center'>Signup</h1>
           <Form.Group className="mb-3 pb-4" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
-            <Form.Control type="username" name='SIGNUPusername' placeholder="Username" onChange={handleSignupChange} value={userSignupData.username} />
+            <Form.Control type="username" name='SIGNUPusername' placeholder="Username" onChange={handleSignupChange} value={userSignupData.SIGNUPusername} />
           </Form.Group>
 
           < Form.Group className="mb-3" controlId="formBasicEmail" >
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" name='SIGNUPemail' placeholder="Enter email" onChange={handleSignupChange} value={userSignupData.email} />
+            <Form.Control type="email" name='SIGNUPemail' placeholder="Enter email" onChange={handleSignupChange} value={userSignupData.SIGNUPemail} />
             <Form.Label id="disclaim">
               We'll never share your email with anyone else.
             </Form.Label>
@@ -86,7 +105,7 @@ export default function Home() {
 
           <Form.Group className="mb-3 pb-4" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name='SIGNUPpassword' placeholder="Password" onChange={handleSignupChange} value={userSignupData.password} />
+            <Form.Control type="password" name='SIGNUPpassword' placeholder="Password" onChange={handleSignupChange} value={userSignupData.SIGNUPpassword} />
           </Form.Group>
           <Form.Group className="mb-3 pb-4" controlId="formBasicDropdown">
             <Row>
@@ -105,6 +124,6 @@ export default function Home() {
             Login?
           </a>
         </Form >)}
-    </div>
+    </Container>
   );
 }

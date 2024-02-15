@@ -8,7 +8,7 @@ import Detail from '../Detail';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Home() {
+export default function Single() {
 
     const [loading, setLoading] = useState(true);
     const [results, setResults] = useState({});

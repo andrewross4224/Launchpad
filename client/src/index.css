@@ -115,6 +115,27 @@ header {
   font-size: 200%;
 }
 
+.title {
+  color: white;
+}
+
+.detailImg {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin: 10px 0;
+}
+
+.detailContainer {
+  backdrop-filter: blur(17px);
+  background-color: rgba(117, 117, 117, 0.3);
+  color: white;
+  border-radius: 25px;
+  max-width: 1000px;
+  width: 80%;
+}
+
 /* CSS FOR LOADER */
 .loading {
   margin-top: 10%;

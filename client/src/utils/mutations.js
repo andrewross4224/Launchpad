@@ -28,8 +28,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($commentText: String!, $launchId: String!, $commentAuthor: String!, $createdAt: String!) {
-    addComment(commentText: $commentText, launchId: $launchId, commentAuthor: $commentAuthor, createdAt: $createdAt) {
+  mutation addComment($commentText: String!, $commentAuthor: String!, $createdAt: String!, $launchId: String! ) {
+    addComment(commentText: $commentText, commentAuthor: $commentAuthor, createdAt: $createdAt launchId: $launchId,) {
       _id
       commentText
       commentAuthor
@@ -43,10 +43,6 @@ export const REMOVE_COMMENT = gql`
   mutation addComment($commentText: ID!) {
     removeComment(commentId: $commentId) {
       _id
-      commentText
-      commentAuthor
-      createdAt
-      launchId
      }
   }
 `;

@@ -14,27 +14,55 @@
   -webkit-text-size-adjust: 100%;
   
 }
+
 body {
   margin: 0;
   display: flex;
   justify-content: center;
+  text-align: -webkit-center;
   min-width: 320px;
   min-height: 100vh;
   background-image: url('https://science.nasa.gov/wp-content/uploads/2023/06/webb-flickr-52259221868-30e1c78f0c-4k-jpg.webp');
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
 }
 
 header {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(17px);
   background-color: rgba(117, 117, 117, 0.3);
-  padding: 10px;
   border-radius: 0 0 25px 25px;
+  margin-bottom: 50px;
+  width: 80vw;
+  z-index: 50;
+  position: relative;
 }
+
+.loginContainer {
+  max-width: 600px;
+}
+
+.container {
+  text-align: -webkit-center;
+}
+
+.nav {
+  border: none;
+}
+
 .card {
   backdrop-filter: blur(17px);
   background-color: rgba(117, 117, 117, 0.3);
+  width: 300px;
+  height: 500px;
+  justify-content: space-between;
+}
+
+.cardImg{
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
 }
 
 .form{
@@ -65,11 +93,18 @@ header {
   justify-content: center;
 }
 
+.dropdown-menu {
+  z-index: 999 !important;
+}
+
+.dropdown:active {
+  border: none;
+}
+
 .show {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(17px);
   background-color: rgba(117, 117, 117, 0.3);
-  border-radius: 0 0 25px 25px;
 }
 
 .top {

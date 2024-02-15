@@ -48,13 +48,13 @@ export default function Home() {
                 :
                 (<Container>
                     <Row>
-                        <Col xs={12} md={4} className='p-3'>
+                        <Col xs={12} md={6} lg={4} className='p-3'>
                             <Card launch={results[0]}/>
                         </Col>
-                        <Col xs={12} md={4} className='p-3'>
+                        <Col xs={12} md={6} lg={4} className='p-3'>
                             <Card launch={results[1]}/>
                         </Col>
-                        <Col xs={12} md={4} className='p-3'>
+                        <Col xs={12} md={{ span: 6, offset: 3}} lg={{span: 4, offset: 0}} className='p-3'>
                             <Card launch={results[2]}/>
                         </Col>
                     </Row>

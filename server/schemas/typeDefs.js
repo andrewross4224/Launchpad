@@ -1,7 +1,7 @@
 const typeDefs = `
     type User {
         _id: ID!
-        userName: String
+        userName: String!
         email: String
         location: String
         savedLaunches: [Launch]

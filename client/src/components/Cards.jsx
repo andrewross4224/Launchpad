@@ -7,6 +7,7 @@ import utc from 'dayjs/plugin/utc'
 import { Link } from 'react-router-dom';
 
 function OurCard({launch}) {
+    const data = launch
     // Functions for formating date
     dayjs.extend(utc)
     const formatDate = (date) => {return dayjs.utc(date).utcOffset(-5).format("MMM DD, YYYY")}
@@ -20,7 +21,7 @@ function OurCard({launch}) {
             <Card.Title>{launch.rocket.configuration.full_name}</Card.Title>
             <Card.Title>{formatDate(launch.window_start)}</Card.Title>
             <Card.Title>{formatTime(launch.window_start)}</Card.Title>
-            <Link className='btn btn-outline-warning' to='/single' state={launch}>Launch Details</Link>
+            <Link className='btn btn-outline-warning' state={{data}} to={'/detail'}>Launch Details</Link>
         </Card>
     )
 }

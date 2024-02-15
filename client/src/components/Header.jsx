@@ -8,7 +8,7 @@ function Header() {
 
     return (
         <header>
-            <h1 className="text-center">LaunchPad</h1>
+            <h1 className="text-center title">LaunchPad</h1>
             <Row className="nav nav-tabs justify-content-center">
                 <Col md={2}>
                     <NavLink to='/' className='nav-link'>Home</NavLink>

@@ -35,11 +35,12 @@ export default function Home() {
     e.preventDefault();
     try {
       const { data } = await login({ variables: { email: userLoginData.LOGINemail, password: userLoginData.LOGINpassword } })
+      Auth.login(data.login.token)
     } catch (err) {
       console.error(err);
     }
 
-    setSignupData({
+    setLoginData({
       LOGINemail: '',
       LOGINpassword: '',
     });

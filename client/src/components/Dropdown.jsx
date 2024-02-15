@@ -1,4 +1,6 @@
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useContext } from "react";
+import { LocationContext } from "../App";
 /* 
 Location ID's inorder:
     12   28.440797968127775, -80.57989329685985
@@ -10,18 +12,21 @@ Location ID's inorder:
 */
 
 function DropMenu() {
+
+    const { location, setLocation } = useContext(LocationContext);
+
     return (
         <NavDropdown
-        data-bs-theme="dark"  
+        data-bs-theme="dark"
         key='down-centered'
         drop='down-centered'
         title='Locations'>
-                <NavDropdown.Item>Cape Canaveral, FL, USA</NavDropdown.Item> 
-                <NavDropdown.Item>Kennedy Space Center, FL, USA</NavDropdown.Item>
-                <NavDropdown.Item>Tanegashima Space Center, Japan</NavDropdown.Item>
-                <NavDropdown.Item>Baikonur Cosmodrome, Republic of Kazakhstan</NavDropdown.Item>
-                <NavDropdown.Item>Satish Dhawan Space Centre, India</NavDropdown.Item>
-                <NavDropdown.Item>Onenui Station, Mahia Peninsula, New Zealand</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {setLocation('12')}}>Cape Canaveral, FL, USA</NavDropdown.Item> 
+                <NavDropdown.Item onClick={() => {setLocation('27')}}>Kennedy Space Center, FL, USA</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {setLocation('26')}}>Tanegashima Space Center, Japan</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {setLocation('15')}}>Baikonur Cosmodrome, Republic of Kazakhstan</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {setLocation('14')}}>Satish Dhawan Space Centre, India</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => {setLocation('10')}}>Onenui Station, Mahia Peninsula, New Zealand</NavDropdown.Item>
         </NavDropdown>
     )
 }

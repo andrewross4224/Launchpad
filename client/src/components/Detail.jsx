@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { QUERY_COMMENTS } from '../utils/queries'
 import { useQuery } from '@apollo/client';
-import Form from 'react-bootstrap/form'
+import Form from 'react-bootstrap/Form'
 
 
 function detail({launch}) {

@@ -1,7 +1,6 @@
 import Form from 'react-bootstrap/form'
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Dropdown from '../Dropdown'
+import Dropdown from 'react-bootstrap/Dropdown'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -15,10 +14,12 @@ import Container from 'react-bootstrap/esm/Container';
 
 export default function Home() {
 
-  const [userLoginData, setLoginData] = useState({ LOGINemail: '', LOGINpassword:''})
-  const [userSignupData, setSignupData] = useState({ SIGNUPusername: '', SIGNUPemail: '', SIGNUPpassword: '' });
+  const [userLoginData, setLoginData] = useState({ LOGINemail: '', LOGINpassword: '' })
+  const [userSignupData, setSignupData] = useState({ SIGNUPusername: '', SIGNUPemail: '', SIGNUPpassword: '', SIGNUPlocation: '12' });
+  const [launchLocation, setLaunchLocation] = useState('Cape Canaveral, FL, USA')
+  const [launchLocationID, setLaunchLocationID] = useState('12')
 
-  const [login, { error: loginErr }] = useMutation(LOGIN_USER);
+  const [loginUser, { error: loginErr }] = useMutation(LOGIN_USER);
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleLoginChange = (event) => {
@@ -34,7 +35,7 @@ export default function Home() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await login({ variables: { email: userLoginData.LOGINemail, password: userLoginData.LOGINpassword } })
+      const { data } = await loginUser({ variables: { email: userLoginData.LOGINemail, password: userLoginData.LOGINpassword } })
       Auth.login(data.login.token)
     } catch (err) {
       console.error(err);
@@ -49,8 +50,7 @@ export default function Home() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      console.log(userSignupData)
-      const { data } = await addUser({ variables: { userName: userSignupData.SIGNUPusername, email: userSignupData.SIGNUPemail, password: userSignupData.SIGNUPpassword, SIGNUPlocation: 'mylocation'} })
+      const { data } = await addUser({ variables: { userName: userSignupData.SIGNUPusername, email: userSignupData.SIGNUPemail, password: userSignupData.SIGNUPpassword, location: launchLocationID } })
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
@@ -60,6 +60,7 @@ export default function Home() {
       userName: '',
       SIGNUPemail: '',
       SIGNUPpassword: '',
+      SIGNUPlocation: '12',
     });
   };
 
@@ -71,7 +72,7 @@ export default function Home() {
         <h1 className='text-center'>Login</h1>
         < Form.Group className="mb-3" controlId="formBasicEmail" >
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" name='LOGINemail' placeholder="Enter email" onChange={handleLoginChange} value={userLoginData.LOGINemail}/>
+          <Form.Control type="email" name='LOGINemail' placeholder="Enter email" onChange={handleLoginChange} value={userLoginData.LOGINemail} />
           <Form.Label id="disclaim">
             We'll never share your email with anyone else.
           </Form.Label>
@@ -79,7 +80,7 @@ export default function Home() {
 
         <Form.Group className="mb-3 pb-4" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" name='LOGINpassword' placeholder="Password" onChange={handleLoginChange} value={userLoginData.LOGINpassword}/>
+          <Form.Control type="password" name='LOGINpassword' placeholder="Password" onChange={handleLoginChange} value={userLoginData.LOGINpassword} />
         </Form.Group>
         <Button variant="outline-warning" type="submit">
           Submit
@@ -108,15 +109,25 @@ export default function Home() {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" name='SIGNUPpassword' placeholder="Password" onChange={handleSignupChange} value={userSignupData.SIGNUPpassword} />
           </Form.Group>
-          <Form.Group className="mb-3 pb-4" controlId="formBasicDropdown">
+          <Form.Group className="mb-3 pb-4">
+            <Form.Label>Please Select your closest launchpad</Form.Label>
             <Row>
-              <Form.Label>Please Select a Launch Location</Form.Label>
-            </Row>
-            {/* <Row>
               <Col className='drop'>
-                <Dropdown />
+                <Dropdown className="d-inline mx-2" drop='down-centered' title='Locations'>
+                  <Dropdown.Toggle id="dropdown-autoclose-true">
+                    {launchLocation}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => {setLaunchLocationID('12'); setLaunchLocation('Cape Canaveral, FL, USA')}}>Cape Canaveral, FL, USA</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {setLaunchLocationID('27'); setLaunchLocation('Kennedy Space Center, FL, USA')}}>Kennedy Space Center, FL, USA</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {setLaunchLocationID('26'); setLaunchLocation('Tanegashima Space Center, Japan')}}>Tanegashima Space Center, Japan</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {setLaunchLocationID('15'); setLaunchLocation('Baikonur Cosmodrome, Republic of Kazakhstan')}}>Baikonur Cosmodrome, Republic of Kazakhstan</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {setLaunchLocationID('14'); setLaunchLocation('Satish Dhawan Space Centre, India')}}>Satish Dhawan Space Centre, India</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {setLaunchLocationID('10'); setLaunchLocation('Onenui Station, Mahia Peninsula, New Zealand')}}>Onenui Station, Mahia Peninsula, New Zealand</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Col>
-            </Row> */}
+            </Row>
           </Form.Group>
           <Button variant="outline-warning" type="submit">
             Submit

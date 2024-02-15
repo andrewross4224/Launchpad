@@ -15,8 +15,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_COMMENTS = gql`
-  query comments($userName: String) {
-    comments(userName: $userName) {
+  query comments($launchId: String!) {
+    comments(launchId: $launchId) {
       _id
       commentText
       createdAt

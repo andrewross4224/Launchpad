@@ -50,8 +50,11 @@ function detail() {
                 <Container className="detailContainer w-80">
                     <Row>
                         <Col>
-                            <h1>Weather</h1>
-                            <h4>{weather.main.temp}</h4>
+                            <h1>Weather : {weather.weather[0].description}</h1>
+                            <h4>Temp : {weather.main.temp} F</h4>
+                            <h4>Humidity : {weather.main.humidity}%</h4>
+                            <h4>Wind : {weather.wind.speed} mph</h4>
+                            <h4>Gusts : {weather.wind.gust} mph</h4>
                         </Col>
                     </Row>
                 </Container>

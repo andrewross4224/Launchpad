@@ -10,11 +10,12 @@ import { useQuery } from '@apollo/client';
 import Form from 'react-bootstrap/form'
 
 
-function detail({launchId}) {
-    const data = useQuery(QUERY_COMMENTS, {
-        variables: launchId
-    })
-    console.log(data)
+function detail({launch}) {
+
+    // const data = useQuery(QUERY_COMMENTS, {
+    //     variables: launchId
+    // })
+    console.log(launch)
     return (
         <Card className='p-2'>
             <Button variant="outline-warning" className='position-absolute Favorite' href=''><CiStar /></Button>

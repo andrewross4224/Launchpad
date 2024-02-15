@@ -10,7 +10,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { createContext, useState } from 'react';
 
-export const LocationContext = createContext();
+export const LocationContext = createContext('12');
 
 import Header from './components/Header';
 
@@ -37,7 +37,7 @@ const client = new ApolloClient({
 });
 
 function App() {
-    const [location, setLocation] = useState('12');
+    const [location, setLocation] = useState();
 
     return (
         <ApolloProvider client={client}>

@@ -25,17 +25,18 @@ export default function Home() {
         setLoading(false)
     };
 
-    useEffect(() => {
-        callAPI(location);
-    }, [location]);
+    const checkLogin = async () => {
+        // if the user is logged in use the location they set on account creation otherwise use default cape
+        await Auth.loggedIn() ?
+            callAPI(location ? location : Auth.getProfile().data.location)
+            :
+            callAPI(location ? location : '12');
+    }
 
     useEffect(() => {
-        // if the user is logged in use the location they set on account creation otherwise use default cape
-        Auth.loggedIn() ?
-            callAPI(Auth.getProfile().data.location)
-            :
-            callAPI('12');
-    }, []);
+        checkLogin();
+    }, [location]);
+
 
     return (
         <main>

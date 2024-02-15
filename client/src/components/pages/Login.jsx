@@ -1,4 +1,4 @@
-import Form from 'react-bootstrap/form'
+import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from '../Dropdown'

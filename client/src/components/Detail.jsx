@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
+
 function detail() {
     const { state: { data } } = useLocation();
     const [weather, setWeather] = useState();

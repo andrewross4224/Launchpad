@@ -16,8 +16,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_COMMENTS = gql`
-  query comments($launchId: String!) {
-    comments(launchId: $launchId) {
+  query comment($launchId: String!) {
+    comment(launchId: $launchId) {
       _id
       commentText
       createdAt

@@ -20,7 +20,7 @@ export default function Home() {
 
     const callAPI = async (location) => {
         setLoading(true)
-        const searchResult = await axios.get(`https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=25&pad__location=${location}`)
+        const searchResult = await axios.get(`https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=25&pad__location=${location}`)
         setResults(searchResult.data.results);
         setLoading(false)
     };

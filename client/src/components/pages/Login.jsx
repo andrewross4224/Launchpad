@@ -82,7 +82,7 @@ export default function Home() {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" name='LOGINpassword' placeholder="Password" onChange={handleLoginChange} value={userLoginData.LOGINpassword} />
         </Form.Group>
-        <Button variant="outline-warning" type="submit">
+        <Button variant="outline-warning" type="submit" className='submit'>
           Submit
         </Button>
         <a className='loginState mt-3' onClick={() => { setLoginForm(loginForm => !loginForm) }}>
@@ -129,7 +129,7 @@ export default function Home() {
               </Col>
             </Row>
           </Form.Group>
-          <Button variant="outline-warning" type="submit">
+          <Button variant="outline-warning" type="submit" className='submit'>
             Submit
           </Button>
           <a className='loginState mt-3' onClick={() => { setLoginForm(loginForm => !loginForm) }}>

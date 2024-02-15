@@ -4,20 +4,24 @@ import Auth from '../utils/auth'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-
 function Header() {
 
     return (
         <header>
-            <h1 className="text-center">Launch Pad</h1>
+            <h1 className="text-center">LaunchPad</h1>
             <Row className="nav nav-tabs justify-content-center">
                 <Col md={2}>
                     <NavLink to='/' className='nav-link'>Home</NavLink>
                 </Col>
                 {Auth.loggedIn() ? (
-                    <Col md={2}>
-                        <NavLink onClick={Auth.logout} className='nav-link'>Logout</NavLink>
-                    </Col>
+                    <>
+                        <Col md={2}>
+                            <NavLink to='/launches' className='nav-link'>Saved Launches</NavLink>
+                        </Col>
+                        <Col md={2}>
+                            <NavLink onClick={Auth.logout} to='/login' className='nav-link'>Logout</NavLink>
+                        </Col>
+                    </>
                 )
                     :
                     (

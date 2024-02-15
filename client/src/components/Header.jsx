@@ -4,7 +4,9 @@ import Auth from '../utils/auth'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function Header({ loggedIn }) {
+
+function Header( {loggedIn} ) {
+
     return (
         <header>
             <h1 className="text-center">Launch Pad</h1>
@@ -12,7 +14,7 @@ function Header({ loggedIn }) {
                 <Col md={2}>
                     <NavLink to='/' className='nav-link'>Home</NavLink>
                 </Col>
-                {Auth.loggedIn ? (
+                {Auth.loggedIn() ? (
                     <Col md={2}>
                         <NavLink onClick={Auth.logout} className='nav-link'>Logout</NavLink>
                     </Col>

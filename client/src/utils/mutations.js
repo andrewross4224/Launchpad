@@ -46,7 +46,7 @@ export const REMOVE_COMMENT = gql`
       commentAuthor
       createdAt
       launchId
-    // }
+     }
   }
 `;
 
